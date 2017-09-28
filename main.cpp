@@ -112,6 +112,39 @@ node * siraliekle(node * r, int x)
 	}
 	return r;
 }
+//Silme fonsiyonu
+node * sil(node *r, int x) {
+	node * temp;
+	node * iter = r;
+	//Eğer silinecek eleman rootsa root u bir sonraki noda kaydır.
+	if (r->x == x) {
+		temp = r;
+		r = iter->next;
+		free(temp);
+		return r;
+	}
+	//Eğer silencek düğüm root değilse sona kadar ara. eşitse sil .Değilse iter i ilerlet.
+	while (iter->next != NULL) 
+	{
+		
+		if (iter->next->x == x) 
+		{
+			temp = iter->next;
+			iter->next = iter->next->next;
+			temp->next = NULL;
+			free(temp);
+			
+			
+		}
+		else 
+		{
+			iter = iter->next;
+		}
+	}
+	return r;
+	
+}
+
 //yazdırma işlemi 
 void yazdir(node *r)
 {
@@ -127,11 +160,11 @@ int main()
 {
 	node *root;
 	root = NULL;
-  
+
 	root = siraliekle(root, 7);
+
 	root = siraliekle(root, 16);
 	root = siraliekle(root, 15);
-	root = siraliekle(root, 3);
 	root = siraliekle(root, 3);
 	root = siraliekle(root, 20);
 	root = siraliekle(root, 12);
@@ -143,8 +176,10 @@ int main()
 	root = siraliekle(root, 22);
 	root = siraliekle(root, 21);
 	yazdir(root);
-
-
+	root = sil(root, 3);
+	root = sil(root, 16);
+	root = sil(root, 15);
+	yazdir(root);
 
 
 
