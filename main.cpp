@@ -1,8 +1,5 @@
 
-//while (r->next != NULL && r->x >x  && r->next->x < x)
 
-// bagliliste.cpp : Defines the entry point for the console application.
-//
 
 #include "stdafx.h"
 #include <stdlib.h>
